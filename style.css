@@ -1,0 +1,55 @@
+:root {
+    --primary-color: #ff5722;
+    --secondary-color: #333333;
+    --bg-color: #f4f4f4;
+    --card-bg: #ffffff;
+    --text-color: #222222;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    color: #ffffff;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px;
+}
+
+.menu-box {
+    background-color: lightyellow;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+}

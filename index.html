@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Bites Café</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <h1>Pixel Bites Café</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <button onclick="toggleDarkMode()">Change Theme</button>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <main id="home">
+        <section class="hero">
+            <h2 id="headline">Welcome to Our Tech-Inspired Café!</h2>
+            <p>Fuel your coding sessions with our delicious meals and coffee.</p>
+        </section>
+
+        <!-- Menu Section with Interactive Events -->
+        <section id="menu">
+            <h2>Interactive Menu</h2>
+            
+            <!-- Event 1: onchange dropdown -->
+            <label for="menuSelect">Choose Menu Category:</label>
+            <select id="menuSelect" onchange="changeMenuCategory()">
+                <option value="Meals">Tech Meals</option>
+                <option value="Drinks">Beverages</option>
+            </select>
+
+            <div id="menuDisplay" class="menu-box">
+                <h3 id="categoryTitle">Tech Meals</h3>
+                <p id="menuItems">Byte-sized Burger, Debugger Fries, Syntax Salad</p>
+            </div>
+
+            <!-- Events 2 & 3: onmouseover and onmouseout -->
+            <div id="specialCard" class="card" onmouseover="showSecret()" onmouseout="hideSecret()">
+                <h3>Secret Developer Special (Hover over me!)</h3>
+                <p id="secretText" style="display: none;">Loaded Code-Coffee with Extra RAM-Syrup!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- External Script Link -->
+    <script src="script.js"></script>
+</body>
+</html>
