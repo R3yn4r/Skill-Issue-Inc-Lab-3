@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111018">
+    <meta name="description" content="Browse the Purple Buff Brews loadout: coffee, milk tea, silog, rice meals, snacks, and pastries in Quezon City.">
+    <title>Menu | Purple Buff Brews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand-lockup" href="index.html" aria-label="Purple Buff Brews home">
+            <span class="brand-mark" aria-hidden="true">PB<span>+</span></span>
+            <span class="brand-name">PURPLE BUFF <b>BREWS</b></span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav" id="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link nav-link-active" href="menu.html">Menu</a>
+            <a class="nav-cart" href="#order-panel" aria-label="View your order"><span aria-hidden="true">+</span> ORDER <b id="order-count">0</b></a>
+        </nav>
+    </header>
+
+    <main class="menu-main">
+        <section class="menu-intro section-shell">
+            <div><p class="eyebrow"><span class="status-dot"></span> CURRENT LOADOUT / QC SERVER</p><h1>THE <span>MENU.</span></h1></div>
+            <p>Pick your buff. Every order is made for the next round, the long study session, or the “last game” that never ends.</p>
+        </section>
+
+        <section class="section-shell" aria-label="Cafe menu">
+            <div class="menu-controls">
+                <div class="control-group">
+                    <label for="category-filter">FILTER LOADOUT</label>
+                    <select id="category-filter" onchange="filterMenu()">
+                        <option value="all">All categories</option>
+                        <option value="drinks">Drinks</option>
+                        <option value="meals">Meals</option>
+                        <option value="snacks">Snacks</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="menu-search">SEARCH</label>
+                    <input id="menu-search" type="search" placeholder="Find a buff..." oninput="searchMenu()" autocomplete="off">
+                </div>
+            </div>
+            <p class="filter-status" id="filter-status" aria-live="polite">40 items in this loadout</p>
+
+            <div class="menu-grid" id="menu-grid">
+                <article class="menu-card" id="spanish-latte" data-name="Spanish Latte" data-price="140" data-category="drinks" data-search="spanish latte rich espresso condensed milk fresh milk drink coffee">
+                    <div class="menu-card-art"><span aria-hidden="true">☕</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Spanish Latte</h2><span class="menu-card-price">₱140</span></div><p class="menu-card-description" id="spanish-latte-description">Rich espresso combined with condensed milk and fresh milk for a sweet, creamy balance.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('spanish-latte')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="cold-brew" data-name="Cold Brew" data-price="110" data-category="drinks" data-search="cold brew slow steeped 12 hours smooth bold low acidity coffee drink">
+                    <div class="menu-card-art"><span aria-hidden="true">🧊</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Cold Brew</h2><span class="menu-card-price">₱110</span></div><p class="menu-card-description" id="cold-brew-description">Slow-steeped for 12 hours to deliver a smooth, bold, and low-acidity coffee experience.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('cold-brew')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="sea-salt-caramel-latte" data-name="Sea Salt Caramel Latte" data-price="150" data-category="drinks" data-search="sea salt caramel latte espresso sweet caramel milk cream foam drink coffee">
+                    <div class="menu-card-art"><span aria-hidden="true">🥛</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Sea Salt Caramel Latte</h2><span class="menu-card-price">₱150</span></div><p class="menu-card-description" id="sea-salt-caramel-latte-description">Espresso and sweet caramel milk topped with a thick layer of savory sea salt cream foam.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('sea-salt-caramel-latte')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="iced-americano" data-name="Iced Americano" data-price="100" data-category="drinks" data-search="iced americano double shot rich espresso cold water and ice coffee drink">
+                    <div class="menu-card-art"><span aria-hidden="true">❄️</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Iced Americano</h2><span class="menu-card-price">₱100</span></div><p class="menu-card-description" id="iced-americano-description">Double shot of rich espresso poured over cold water and ice for a crisp, clean pick-me-up.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('iced-americano')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="vanilla-macchiato" data-name="Vanilla Macchiato" data-price="145" data-category="drinks" data-search="vanilla macchiato steamed milk espresso vanilla bean syrup coffee drink">
+                    <div class="menu-card-art"><span aria-hidden="true">✨</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Vanilla Macchiato</h2><span class="menu-card-price">₱145</span></div><p class="menu-card-description" id="vanilla-macchiato-description">Fresh steamed milk marked with espresso and drizzled with sweet vanilla bean syrup.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('vanilla-macchiato')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="cafe-mocha" data-name="Cafe Mocha" data-price="145" data-category="drinks" data-search="cafe mocha espresso velvety steamed milk chocolate syrup drink coffee">
+                    <div class="menu-card-art"><span aria-hidden="true">🍫</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Cafe Mocha</h2><span class="menu-card-price">₱145</span></div><p class="menu-card-description" id="cafe-mocha-description">A harmonious blend of espresso, velvety steamed milk, and rich chocolate syrup.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('cafe-mocha')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="white-chocolate-mocha" data-name="White Chocolate Mocha" data-price="155" data-category="drinks" data-search="white chocolate mocha espresso and milk whipped cream sweet drink coffee">
+                    <div class="menu-card-art"><span aria-hidden="true">🍪</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>White Chocolate Mocha</h2><span class="menu-card-price">₱155</span></div><p class="menu-card-description" id="white-chocolate-mocha-description">Sweet white chocolate melted into espresso and fresh milk, topped with whipped cream.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('white-chocolate-mocha')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="dark-chocolate-latte" data-name="Dark Chocolate Latte" data-price="135" data-category="drinks" data-search="dark chocolate latte bitter sweet espresso textured milk drink coffee">
+                    <div class="menu-card-art"><span aria-hidden="true">🖤</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Dark Chocolate Latte</h2><span class="menu-card-price">₱135</span></div><p class="menu-card-description" id="dark-chocolate-latte-description">Deep, bittersweet dark chocolate infused with bold espresso and textured milk.</p><div class="menu-card-action"><span>COFFEE FAVORITE</span><button class="add-button" type="button" onclick="addToOrder('dark-chocolate-latte')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="iced-matcha-latte" data-name="Iced Matcha Latte" data-price="145" data-category="drinks" data-search="iced matcha latte premium ceremonial green tea velvety sweet milk specialty drink">
+                    <div class="menu-card-art"><span aria-hidden="true">🍵</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Iced Matcha Latte</h2><span class="menu-card-price">₱145</span></div><p class="menu-card-description" id="iced-matcha-latte-description">Premium ceremonial-grade Japanese green tea whisked with velvety sweet milk.</p><div class="menu-card-action"><span>NON-COFFEE</span><button class="add-button" type="button" onclick="addToOrder('iced-matcha-latte')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="belgian-dark-chocolate" data-name="Belgian Dark Chocolate" data-price="135" data-category="drinks" data-search="belgian dark chocolate melted belgian blend hot cold milk drink specialty">
+                    <div class="menu-card-art"><span aria-hidden="true">🍫</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Belgian Dark Chocolate</h2><span class="menu-card-price">₱135</span></div><p class="menu-card-description" id="belgian-dark-chocolate-description">Rich, melted Belgian chocolate blended into hot or cold milk for a classic comforting drink.</p><div class="menu-card-action"><span>NON-COFFEE</span><button class="add-button" type="button" onclick="addToOrder('belgian-dark-chocolate')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="taro-milk-tea-with-pearls" data-name="Taro Milk Tea with Pearls" data-price="125" data-category="drinks" data-search="taro milk tea with pearls smooth sweet taro milk tea chewy brown sugar tapioca pearls drink">
+                    <div class="menu-card-art"><span aria-hidden="true">🧋</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Taro Milk Tea with Pearls</h2><span class="menu-card-price">₱125</span></div><p class="menu-card-description" id="taro-milk-tea-with-pearls-description">Smooth, sweet taro milk tea served with chewy brown sugar tapioca pearls.</p><div class="menu-card-action"><span>NON-COFFEE</span><button class="add-button" type="button" onclick="addToOrder('taro-milk-tea-with-pearls')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="strawberry-milk" data-name="Strawberry Milk" data-price="140" data-category="drinks" data-search="strawberry milk real crushed strawberry puree cold milk cream drink refreshing">
+                    <div class="menu-card-art"><span aria-hidden="true">🍓</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Strawberry Milk</h2><span class="menu-card-price">₱140</span></div><p class="menu-card-description" id="strawberry-milk-description">Real crushed strawberry puree blended with fresh cold milk and a touch of cream.</p><div class="menu-card-action"><span>NON-COFFEE</span><button class="add-button" type="button" onclick="addToOrder('strawberry-milk')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="wintermelon-milk-tea" data-name="Wintermelon Milk Tea" data-price="130" data-category="drinks" data-search="wintermelon milk tea classic sweet tea fresh milk black pearls drink">
+                    <div class="menu-card-art"><span aria-hidden="true">🧃</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Wintermelon Milk Tea</h2><span class="menu-card-price">₱130</span></div><p class="menu-card-description" id="wintermelon-milk-tea-description">Classic sweet wintermelon tea paired with fresh milk and black pearls.</p><div class="menu-card-action"><span>NON-COFFEE</span><button class="add-button" type="button" onclick="addToOrder('wintermelon-milk-tea')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="classic-milk-tea-with-pudding" data-name="Classic Milk Tea with Pudding" data-price="120" data-category="drinks" data-search="classic milk tea with pudding traditional black milk tea egg pudding tea drink">
+                    <div class="menu-card-art"><span aria-hidden="true">🥤</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Classic Milk Tea with Pudding</h2><span class="menu-card-price">₱120</span></div><p class="menu-card-description" id="classic-milk-tea-with-pudding-description">Traditional black milk tea served with smooth, custard-like egg pudding.</p><div class="menu-card-action"><span>NON-COFFEE</span><button class="add-button" type="button" onclick="addToOrder('classic-milk-tea-with-pudding')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="fresh-lemon-honey-tea" data-name="Fresh Lemon Honey Tea" data-price="110" data-category="drinks" data-search="fresh lemon honey tea brewed black tea honey fresh lemon slices drink refreshing">
+                    <div class="menu-card-art"><span aria-hidden="true">🍋</span><span class="card-category">DRINKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Fresh Lemon Honey Tea</h2><span class="menu-card-price">₱110</span></div><p class="menu-card-description" id="fresh-lemon-honey-tea-description">Bright, refreshing brewed black tea infused with real honey and fresh lemon slices.</p><div class="menu-card-action"><span>NON-COFFEE</span><button class="add-button" type="button" onclick="addToOrder('fresh-lemon-honey-tea')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="butter-croissant" data-name="Butter Croissant" data-price="120" data-category="snacks" data-search="butter croissant flaky golden brown pastry bakery snack fresh daily">
+                    <div class="menu-card-art"><span aria-hidden="true">🥐</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Butter Croissant</h2><span class="menu-card-price">₱120</span></div><p class="menu-card-description" id="butter-croissant-description">Flaky, golden-brown butter pastry baked fresh daily with a light, airy crumble.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('butter-croissant')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="cheese-ensaymada" data-name="Cheese Ensaymada" data-price="95" data-category="snacks" data-search="cheese ensaymada soft brioche butter sugar grated cheese bakery snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🧀</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Cheese Ensaymada</h2><span class="menu-card-price">₱95</span></div><p class="menu-card-description" id="cheese-ensaymada-description">Soft brioche bun brushed with butter, sugar, and topped with a generous mountain of grated cheese.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('cheese-ensaymada')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="cinnamon-roll" data-name="Cinnamon Roll" data-price="135" data-category="snacks" data-search="cinnamon roll warm fluffy pastry swirl cinnamon cream cheese frosting bakery snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🍥</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Cinnamon Roll</h2><span class="menu-card-price">₱135</span></div><p class="menu-card-description" id="cinnamon-roll-description">Warm, fluffy pastry swirl packed with cinnamon and topped with rich cream cheese frosting.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('cinnamon-roll')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="fudgy-dark-chocolate-brownie" data-name="Fudgy Dark Chocolate Brownie" data-price="90" data-category="snacks" data-search="fudgy dark chocolate brownie chewy rich cocoa chocolate chunks dessert bakery snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🍫</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Fudgy Dark Chocolate Brownie</h2><span class="menu-card-price">₱90</span></div><p class="menu-card-description" id="fudgy-dark-chocolate-brownie-description">Chewy, rich cocoa brownie loaded with chocolate chunks and a crinkly top.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('fudgy-dark-chocolate-brownie')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="classic-cheese-roll" data-name="Classic Cheese Roll" data-price="85" data-category="snacks" data-search="classic cheese roll milk bread cheddar cheese center bakery snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🧀</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Classic Cheese Roll</h2><span class="menu-card-price">₱85</span></div><p class="menu-card-description" id="classic-cheese-roll-description">Soft milk bread filled with a melt-in-your-mouth cheddar cheese center.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('classic-cheese-roll')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="blueberry-cheesecake-slice" data-name="Blueberry Cheesecake Slice" data-price="160" data-category="snacks" data-search="blueberry cheesecake slice new york style creamy cheesecake blueberry compote dessert bakery snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🫐</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Blueberry Cheesecake Slice</h2><span class="menu-card-price">₱160</span></div><p class="menu-card-description" id="blueberry-cheesecake-slice-description">Dense, creamy New York-style cheesecake topped with sweet blueberry compote.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('blueberry-cheesecake-slice')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="chocolate-fudge-cake-slice" data-name="Chocolate Fudge Cake Slice" data-price="150" data-category="snacks" data-search="chocolate fudge cake slice multi layer chocolate sponge glossy fudge frosting dessert bakery snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🍰</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Chocolate Fudge Cake Slice</h2><span class="menu-card-price">₱150</span></div><p class="menu-card-description" id="chocolate-fudge-cake-slice-description">Moist multi-layer chocolate sponge cake coated in rich, glossy fudge frosting.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('chocolate-fudge-cake-slice')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="banana-bread-slice" data-name="Banana Bread Slice" data-price="80" data-category="snacks" data-search="banana bread slice moist homemade loaf ripe bananas cinnamon dessert bakery snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🍌</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Banana Bread Slice</h2><span class="menu-card-price">₱80</span></div><p class="menu-card-description" id="banana-bread-slice-description">Homemade moist banana loaf slice baked with sweet ripe bananas and a hint of cinnamon.</p><div class="menu-card-action"><span>BAKERY</span><button class="add-button" type="button" onclick="addToOrder('banana-bread-slice')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="loaded-nacho-supreme" data-name="Loaded Nacho Supreme" data-price="180" data-category="snacks" data-search="loaded nacho supreme tortilla chips cheese sauce salsa seasoned ground beef savory snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🌮</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Loaded Nacho Supreme</h2><span class="menu-card-price">₱180</span></div><p class="menu-card-description" id="loaded-nacho-supreme-description">Crispy tortilla chips topped with warm cheese sauce, fresh salsa, and seasoned ground beef.</p><div class="menu-card-action"><span>SAVORY</span><button class="add-button" type="button" onclick="addToOrder('loaded-nacho-supreme')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="flavored-french-fries" data-name="Flavored French Fries" data-price="110" data-category="snacks" data-search="flavored french fries crispy thick cut fries cheese sour cream bbq powder savory snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🍟</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Flavored French Fries</h2><span class="menu-card-price">₱110</span></div><p class="menu-card-description" id="flavored-french-fries-description">Crispy thick-cut fries tossed in your choice of Cheese, Sour Cream, or BBQ powder.</p><div class="menu-card-action"><span>SAVORY</span><button class="add-button" type="button" onclick="addToOrder('flavored-french-fries')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="mozzarella-cheese-sticks" data-name="Mozzarella Cheese Sticks" data-price="160" data-category="snacks" data-search="mozzarella cheese sticks golden breaded mozzarella gooey marinara sauce savory snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🧀</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Mozzarella Cheese Sticks</h2><span class="menu-card-price">₱160</span></div><p class="menu-card-description" id="mozzarella-cheese-sticks-description">Golden-breaded mozzarella sticks fried until gooey, served with a side of marinara sauce.</p><div class="menu-card-action"><span>SAVORY</span><button class="add-button" type="button" onclick="addToOrder('mozzarella-cheese-sticks')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="club-sandwich-bites" data-name="Club Sandwich Bites" data-price="140" data-category="snacks" data-search="club sandwich bites bite sized quartered toasted sandwiches ham cheese egg veggies snack">
+                    <div class="menu-card-art"><span aria-hidden="true">🥪</span><span class="card-category">SNACKS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Club Sandwich Bites</h2><span class="menu-card-price">₱140</span></div><p class="menu-card-description" id="club-sandwich-bites-description">Bite-sized quartered toasted sandwiches stacked with ham, cheese, egg, and fresh veggies.</p><div class="menu-card-action"><span>SAVORY</span><button class="add-button" type="button" onclick="addToOrder('club-sandwich-bites')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="beef-tapa-rice-bowl" data-name="Beef Tapa Rice Bowl" data-price="185" data-category="meals" data-search="beef tapa rice bowl marinated beef sirloin garlic fried rice sunny side egg vinegar meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🍚</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Beef Tapa Rice Bowl</h2><span class="menu-card-price">₱185</span></div><p class="menu-card-description" id="beef-tapa-rice-bowl-description">Tender marinated beef sirloin served with garlic fried rice, a sunny-side-up egg, and vinegar.</p><div class="menu-card-action"><span>RICE BOWL</span><button class="add-button" type="button" onclick="addToOrder('beef-tapa-rice-bowl')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="sweet-pork-tocino" data-name="Sweet Pork Tocino" data-price="175" data-category="meals" data-search="sweet pork tocino cured pork slices caramelized garlic rice egg meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🥓</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Sweet Pork Tocino</h2><span class="menu-card-price">₱175</span></div><p class="menu-card-description" id="sweet-pork-tocino-description">Sweet and savory cured pork slices caramelized to perfection, served with garlic rice and egg.</p><div class="menu-card-action"><span>RICE BOWL</span><button class="add-button" type="button" onclick="addToOrder('sweet-pork-tocino')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="crispy-chicken-popcorn-rice" data-name="Crispy Chicken Popcorn Rice" data-price="165" data-category="meals" data-search="crispy chicken popcorn rice bite sized golden chicken bites sweet soy glaze rice meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🍗</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Crispy Chicken Popcorn Rice</h2><span class="menu-card-price">₱165</span></div><p class="menu-card-description" id="crispy-chicken-popcorn-rice-description">Bite-sized golden chicken bites tossed in a sweet soy glaze over steaming white rice.</p><div class="menu-card-action"><span>RICE BOWL</span><button class="add-button" type="button" onclick="addToOrder('crispy-chicken-popcorn-rice')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="pork-bbq-rice-plate" data-name="Pork BBQ Rice Plate" data-price="180" data-category="meals" data-search="pork bbq rice plate skewers grilled filipino barbecue savory glaze garlic rice meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🍢</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Pork BBQ Rice Plate</h2><span class="menu-card-price">₱180</span></div><p class="menu-card-description" id="pork-bbq-rice-plate-description">Two skewers of juicy, charcoal-grilled Filipino pork barbecue with a savory glaze and garlic rice.</p><div class="menu-card-action"><span>RICE PLATE</span><button class="add-button" type="button" onclick="addToOrder('pork-bbq-rice-plate')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="longganisa-rice-meal" data-name="Longganisa Rice Meal" data-price="170" data-category="meals" data-search="longganisa rice meal sweet garlic pork sausages garlic rice fried egg meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🍳</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Longganisa Rice Meal</h2><span class="menu-card-price">₱170</span></div><p class="menu-card-description" id="longganisa-rice-meal-description">Sweet garlic pork sausages served with garlic fried rice and a runny fried egg.</p><div class="menu-card-action"><span>RICE MEAL</span><button class="add-button" type="button" onclick="addToOrder('longganisa-rice-meal')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="bangus-sisig-rice-bowl" data-name="Bangus Sisig Rice Bowl" data-price="180" data-category="meals" data-search="bangus sisig rice bowl flaked smoked milkfish onions chilies calamansi garlic rice meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🐟</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Bangus Sisig Rice Bowl</h2><span class="menu-card-price">₱180</span></div><p class="menu-card-description" id="bangus-sisig-rice-bowl-description">Flaked smoked milkfish sautéed with onions, chilies, and calamansi over warm garlic rice.</p><div class="menu-card-action"><span>RICE BOWL</span><button class="add-button" type="button" onclick="addToOrder('bangus-sisig-rice-bowl')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="creamy-carbonara" data-name="Creamy Carbonara" data-price="195" data-category="meals" data-search="creamy carbonara fettuccine pasta crispy bacon mushrooms parmesan cheese meal pasta">
+                    <div class="menu-card-art"><span aria-hidden="true">🍝</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Creamy Carbonara</h2><span class="menu-card-price">₱195</span></div><p class="menu-card-description" id="creamy-carbonara-description">Rich fettuccine pasta tossed with crispy bacon bits, sliced mushrooms, and parmesan cheese.</p><div class="menu-card-action"><span>PASTA</span><button class="add-button" type="button" onclick="addToOrder('creamy-carbonara')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="chicken-alfredo-pasta" data-name="Chicken Alfredo Pasta" data-price="205" data-category="meals" data-search="chicken alfredo pasta tender grilled chicken creamy garlic parmesan pasta meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🍝</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Chicken Alfredo Pasta</h2><span class="menu-card-price">₱205</span></div><p class="menu-card-description" id="chicken-alfredo-pasta-description">Tender grilled chicken breast served over creamy garlic-parmesan pasta with garlic bread.</p><div class="menu-card-action"><span>PASTA</span><button class="add-button" type="button" onclick="addToOrder('chicken-alfredo-pasta')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="spicy-arrabbiata-pasta" data-name="Spicy Arrabbiata Pasta" data-price="180" data-category="meals" data-search="spicy arrabbiata pasta tangy tomato based garlic chili flakes basil meal pasta">
+                    <div class="menu-card-art"><span aria-hidden="true">🌶️</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Spicy Arrabbiata Pasta</h2><span class="menu-card-price">₱180</span></div><p class="menu-card-description" id="spicy-arrabbiata-pasta-description">Tangy tomato-based pasta tossed with garlic, chili flakes, and fresh basil leaves.</p><div class="menu-card-action"><span>PASTA</span><button class="add-button" type="button" onclick="addToOrder('spicy-arrabbiata-pasta')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="classic-clubhouse-sandwich" data-name="Classic Clubhouse Sandwich" data-price="185" data-category="meals" data-search="classic clubhouse sandwich triple decker toasted sandwich chicken salad ham cheese lettuce tomato egg meal">
+                    <div class="menu-card-art"><span aria-hidden="true">🥪</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Classic Clubhouse Sandwich</h2><span class="menu-card-price">₱185</span></div><p class="menu-card-description" id="classic-clubhouse-sandwich-description">Triple-decker toasted sandwich filled with chicken salad, ham, cheese, lettuce, tomato, and egg.</p><div class="menu-card-action"><span>SANDWICH</span><button class="add-button" type="button" onclick="addToOrder('classic-clubhouse-sandwich')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="classic-cheeseburger" data-name="Classic Cheeseburger" data-price="210" data-category="meals" data-search="classic cheeseburger juicy beef patty melted cheddar cheese house sauce pickles brioche bun meal burger">
+                    <div class="menu-card-art"><span aria-hidden="true">🍔</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Classic Cheeseburger</h2><span class="menu-card-price">₱210</span></div><p class="menu-card-description" id="classic-cheeseburger-description">Juicy beef patty smashed with melted cheddar cheese, house sauce, and pickles on a brioche bun.</p><div class="menu-card-action"><span>BURGER</span><button class="add-button" type="button" onclick="addToOrder('classic-cheeseburger')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="crispy-chicken-burger" data-name="Crispy Chicken Burger" data-price="195" data-category="meals" data-search="crispy chicken burger golden fried chicken fillet coleslaw garlic mayo toasted bun meal burger">
+                    <div class="menu-card-art"><span aria-hidden="true">🍔</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Crispy Chicken Burger</h2><span class="menu-card-price">₱195</span></div><p class="menu-card-description" id="crispy-chicken-burger-description">Golden fried chicken fillet topped with coleslaw and garlic mayo inside a toasted bun.</p><div class="menu-card-action"><span>BURGER</span><button class="add-button" type="button" onclick="addToOrder('crispy-chicken-burger')">ADD TO ORDER</button></div></div>
+                </article>
+                <article class="menu-card" id="bacon-mushroom-melt" data-name="Bacon Mushroom Melt" data-price="220" data-category="meals" data-search="bacon mushroom melt beef patty mushrooms crispy bacon swiss cheese meal burger">
+                    <div class="menu-card-art"><span aria-hidden="true">🍔</span><span class="card-category">MEALS</span></div>
+                    <div class="menu-card-body"><div class="menu-card-heading"><h2>Bacon Mushroom Melt</h2><span class="menu-card-price">₱220</span></div><p class="menu-card-description" id="bacon-mushroom-melt-description">Beef patty loaded with sautéed mushrooms, crispy bacon strips, and melted swiss cheese.</p><div class="menu-card-action"><span>BURGER</span><button class="add-button" type="button" onclick="addToOrder('bacon-mushroom-melt')">ADD TO ORDER</button></div></div>
+                </article>
+            </div>
+
+            <section class="order-panel" id="order-panel" aria-label="Simulated order summary">
+                <div class="order-copy"><span class="order-icon" aria-hidden="true">+</span><div><h2>Your party order</h2><p><span id="order-item-count">0 items</span> <span aria-hidden="true">·</span> simulated cart, no checkout</p><p class="order-feedback" id="order-feedback" aria-live="polite"></p></div></div>
+                <div class="order-totals">
+                    <strong class="order-total" id="order-total">₱0</strong>
+                    <div class="order-actions">
+                        <button class="checkout-button" type="button" onclick="checkoutOrder()">CHECK OUT</button>
+                        <button class="clear-button" type="button" onclick="clearOrder()">CLEAR ORDER</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="brand-lockup" href="index.html" aria-label="Purple Buff Brews home"><span class="brand-mark" aria-hidden="true">PB<span>+</span></span><span class="brand-name">PURPLE BUFF <b>BREWS</b></span></a>
+        <p>Good games. Good coffee. Good company.</p>
+        <span class="footer-note">QUEZON CITY, PH <b>•</b> GG, SEE YOU SOON.</span>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
