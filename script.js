@@ -47,6 +47,9 @@ const carouselSlides = [
     { src: "images/drinks/taro milk tea.jpg", alt: "Taro milk tea with chewy pearls", title: "04 / TARO MILK TEA" }
 ];
 let carouselIndex = 0;
+const heroSlideCount = 4;
+let heroSlideIndex = 0;
+let heroSliderTimer = null;
 
 function toggleMobileMenu() {
     const navigation = document.getElementById("main-nav");
@@ -183,6 +186,56 @@ function moveCarousel(direction) {
     }, 130);
 }
 
+function showHeroSlide(index) {
+    const slideIndex = (index + heroSlideCount) % heroSlideCount;
+    const activeSlide = document.getElementById(`hero-slide-${slideIndex}`);
+
+    if (!activeSlide) {
+        return;
+    }
+
+    heroSlideIndex = slideIndex;
+    for (let currentIndex = 0; currentIndex < heroSlideCount; currentIndex += 1) {
+        const slide = document.getElementById(`hero-slide-${currentIndex}`);
+        if (slide) {
+            slide.classList.toggle("is-active", currentIndex === heroSlideIndex);
+        }
+    }
+}
+
+function pauseHeroSlider(pointerEvent) {
+    const heroSlider = document.getElementById("hero-slider");
+    if (!heroSlider || (pointerEvent && heroSlider.contains(pointerEvent.relatedTarget))) {
+        return;
+    }
+
+    window.clearInterval(heroSliderTimer);
+    heroSliderTimer = null;
+}
+
+function resumeHeroSlider(pointerEvent) {
+    const heroSlider = document.getElementById("hero-slider");
+    if (!heroSlider || (pointerEvent && heroSlider.contains(pointerEvent.relatedTarget)) || window.matchMedia("(prefers-reduced-motion: reduce)").matches || heroSliderTimer !== null) {
+        return;
+    }
+
+    heroSliderTimer = window.setInterval(() => showHeroSlide(heroSlideIndex + 1), 5000);
+}
+
+function setupHeroSlider() {
+    const heroSlider = document.getElementById("hero-slider");
+    const firstSlide = document.getElementById("hero-slide-0");
+
+    if (!heroSlider || !firstSlide) {
+        return;
+    }
+
+    showHeroSlide(heroSlideIndex);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        heroSliderTimer = window.setInterval(() => showHeroSlide(heroSlideIndex + 1), 5000);
+    }
+}
+
 function addMenuImages() {
     const menuGrid = document.getElementById("menu-grid");
     if (!menuGrid) {
@@ -241,5 +294,6 @@ if (menuGrid) {
 }
 
 addMenuImages();
+setupHeroSlider();
 setupScrollReveals();
 updateOrderSummary();
