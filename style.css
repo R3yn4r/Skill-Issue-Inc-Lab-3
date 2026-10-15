@@ -191,7 +191,8 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
 .menu-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-card); transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
 .menu-card:hover, .menu-card.card-hovered { transform: translateY(-5px); border-color: var(--color-purple); box-shadow: var(--shadow-glow); }
 .menu-card[hidden] { display: none; }
-.menu-card-art { position: relative; display: grid; place-items: center; min-height: 146px; overflow: hidden; background: radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--color-purple) 38%, transparent), transparent 55%), var(--color-bg-raised); }
+/* Taller photo ratio (width : height = 4 : 5). Change to 3 / 4 for even taller, or 1 / 1 for square. */
+.menu-card-art { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; overflow: hidden; background: radial-gradient(circle at 50% 58%, color-mix(in srgb, var(--color-purple) 38%, transparent), transparent 55%), var(--color-bg-raised); }
 .menu-card-art::after { position: absolute; width: 112px; height: 112px; border: 1px solid color-mix(in srgb, var(--color-text) 16%, transparent); border-radius: 50%; content: ''; }
 .menu-card-art > span:first-child { position: relative; z-index: 1; font-size: 57px; filter: drop-shadow(0 12px 10px color-mix(in srgb, var(--color-bg) 35%, transparent)); transition: transform 180ms ease; }
 .menu-card:hover .menu-card-art > span:first-child { transform: scale(1.1) rotate(-4deg); }
@@ -297,7 +298,7 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
     .control-group input { width: 72%; }
     .menu-grid { grid-template-columns: 1fr; gap: 12px; }
     .menu-card { display: grid; grid-template-columns: 112px 1fr; }
-    .menu-card-art { min-height: 100%; }
+    .menu-card-art { aspect-ratio: auto; min-height: 100%; }
     .menu-card-art::after { width: 80px; height: 80px; }
     .menu-card-art > span:first-child { font-size: 43px; }
     .menu-card-body { padding: 12px; }
@@ -733,7 +734,7 @@ body { background: var(--color-cream); color: var(--color-ink); font-size: var(-
     .control-group input { flex: 1; width: auto; }
     .menu-grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
     .menu-card { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); }
-    .menu-card-art { min-height: 100%; }
+    .menu-card-art { aspect-ratio: auto; min-height: 100%; }
     .menu-card-body { padding: var(--space-3); }
     .menu-card-description { max-height: 7rem; margin-top: var(--space-2); opacity: 1; }
     .menu-card-action { flex-wrap: wrap; gap: var(--space-2); padding-top: var(--space-3); }
