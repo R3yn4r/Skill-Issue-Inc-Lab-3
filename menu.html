@@ -36,20 +36,20 @@
         <section class="section-shell" aria-label="Cafe menu">
             <div class="menu-controls">
                 <div class="control-group">
-                    <label for="category-filter">FILTER LOADOUT</label>
-                    <select id="category-filter" onchange="filterMenu()">
-                        <option value="all">All categories</option>
-                        <option value="drinks">Drinks</option>
-                        <option value="meals">Meals</option>
-                        <option value="snacks">Snacks</option>
-                    </select>
+                    <span class="control-label">FILTER LOADOUT</span>
+                    <div class="category-filter-buttons" role="group" aria-label="Filter menu by category">
+                        <button class="category-filter-button" type="button" data-category-filter="all" aria-pressed="true" onclick="setCategoryFilter('all')">All categories</button>
+                        <button class="category-filter-button" type="button" data-category-filter="drinks" aria-pressed="false" onclick="setCategoryFilter('drinks')">Drinks</button>
+                        <button class="category-filter-button" type="button" data-category-filter="meals" aria-pressed="false" onclick="setCategoryFilter('meals')">Meals</button>
+                        <button class="category-filter-button" type="button" data-category-filter="snacks" aria-pressed="false" onclick="setCategoryFilter('snacks')">Snacks</button>
+                    </div>
                 </div>
                 <div class="control-group">
                     <label for="menu-search">SEARCH</label>
                     <input id="menu-search" type="search" placeholder="Find a buff..." oninput="searchMenu()" autocomplete="off">
                 </div>
             </div>
-            <p class="filter-status" id="filter-status" aria-live="polite">40 items in this loadout</p>
+            <p class="filter-status" id="filter-status" aria-live="polite">36 items in this loadout</p>
 
             <div class="menu-grid" id="menu-grid">
                 <h2 class="category-divider" data-menu-category="drinks">01 / DRINKS <span>BREWS & POTIONS</span></h2>

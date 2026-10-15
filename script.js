@@ -94,11 +94,11 @@ function hideItemDetails(itemId, pointerEvent) {
 }
 
 function filterMenu() {
-    const categorySelect = document.getElementById("category-filter");
+    const activeCategoryButton = document.querySelector(".category-filter-button[aria-pressed='true']");
     const searchInput = document.getElementById("menu-search");
     const menuGrid = document.getElementById("menu-grid");
     const filterStatus = document.getElementById("filter-status");
-    const selectedCategory = categorySelect.value;
+    const selectedCategory = activeCategoryButton.dataset.categoryFilter;
     const searchTerm = searchInput.value.trim().toLowerCase();
     let visibleCount = 0;
 
@@ -119,6 +119,13 @@ function filterMenu() {
         ? `${visibleCount} ${visibleCount === 1 ? "match" : "matches"} found`
         : `${visibleCount} ${visibleCount === 1 ? "item" : "items"} in this loadout`;
     menuGrid.classList.toggle("filtered-grid", selectedCategory !== "all");
+}
+
+function setCategoryFilter(category) {
+    document.querySelectorAll(".category-filter-button").forEach((button) => {
+        button.setAttribute("aria-pressed", button.dataset.categoryFilter === category);
+    });
+    filterMenu();
 }
 
 function searchMenu() {
