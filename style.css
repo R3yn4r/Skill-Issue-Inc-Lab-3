@@ -317,7 +317,7 @@ button, a, input, select { -webkit-tap-highlight-color: transparent; }
 }
 
 /* Poster-style layout overrides for the existing cafe pages. */
-body { background: var(--color-cream); color: var(--color-ink); font-size: var(--font-size-body); line-height: var(--line-body); }
+body { background: var(--color-cream); color: var(--color-ink); font-size: var(--font-size-body); line-height: var(--line-body); text-align: justify; }
 .site-header { min-height: 72px; padding-inline: max(var(--space-5), calc((100% - var(--content-width)) / 2)); border-color: var(--color-accent); background: var(--color-ink); }
 .brand-lockup { gap: var(--space-3); }
 .brand-mark { width: 44px; height: 44px; border: 2px solid var(--color-accent); border-radius: 50%; color: var(--color-accent); transform: none; }
